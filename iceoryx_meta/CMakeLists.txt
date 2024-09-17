@@ -26,6 +26,12 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/tests.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/install_help_and_config.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/../iceoryx_platform/cmake/IceoryxPlatform.cmake)
 
+
+if(CPPTEST_COVERAGE)
+  include(./../cpptest-coverage-ct.cmake)
+endif()
+
+
 if(BUILD_SHARED_LIBS)
     # set rpath for finding shared libraries outside of the build-tree
     # see https://gitlab.kitware.com/cmake/community/-/wikis/doc/cmake/RPATH-handling#cmake-and-the-rpath
