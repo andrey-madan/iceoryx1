@@ -17,3 +17,8 @@ tools/website/generated/
 __pycache__
 /bazel-*
 MODULE.bazel.lock
+.devcontainer/*.gz
+.devcontainer/.cpptest
+.cpptest
+.coverage
+reports
