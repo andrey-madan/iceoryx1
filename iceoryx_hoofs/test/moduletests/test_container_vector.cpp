@@ -67,6 +67,7 @@ TEST_F(vector_test, Capacity)
 TEST_F(vector_test, NewVectorWithElementsCTorWithZeroElements)
 {
     ::testing::Test::RecordProperty("TEST_ID", "618cd7f7-42d7-49e0-a504-3894e34a28f8");
+     ::testing::Test::RecordProperty("filename",__FILE__);
     constexpr uint64_t CAPACITY{42U};
     constexpr int DEFAULT_VALUE{13};
     vector<int, CAPACITY> sut(0, DEFAULT_VALUE);
