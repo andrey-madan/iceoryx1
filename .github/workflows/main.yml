@@ -46,12 +46,12 @@ jobs:
       - name: Configure Project
         run: |
           # git config --global --add safe.directory /workspaces/iceoryx
-          cmake -Bbuild -Hiceoryx_meta -DCPPTEST_COVERAGE=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCPPTEST_HOME=/opt/parasoft/cpptest/ct -DBUILD_TEST=ON -DCMAKE_PREFIX_PATH=$(pwd)/build/dependencies/
+          cmake -Bbuild -Hiceoryx_meta -DCPPTEST_COVERAGE=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_TEST=ON -DCMAKE_PREFIX_PATH=$(pwd)/build/dependencies/
 
       # Builds your CMake project. (This step is optional, as it is not required for code analysis).
       - name: Build Project
         run: |
-          cmake --build build -j24
+          cmake --build build -j4
 
       - name: Run Unit Tests
         run: |
@@ -111,23 +111,23 @@ jobs:
 
       - name: Show Coverage HTML Link
         shell: bash
-        run: echo "Check html report https://parasoft-se.github.io/iceoryx/coverage.html"
+        run: echo "Check html report https://github.com/andrey-madan/iceoryx1/coverage.html"
         
       - name: Line Coverage Quality Gate
         working-directory: ${{github.workspace}}/build
         shell: bash
         # Query for project's coverage and compare with the gate requirements
         run: |
-          NUMBER=$(cpptestcov query -coverage LC .coverage) && if [ $NUMBER -lt $LINE_COV_GATE ]; then echo "LINE coverage quality gate failed"; echo "Expected result $LINE_COV_GATE%, echieved $NUMBER%"; false; else echo "LINE coverage quality gate passed with $NUMBER% (required $LINE_COV_GATE%)"; true; fi  
-          echo "Check html report https://parasoft-se.github.io/iceoryx/coverage.html"
+          NUMBER=$(cpptestcov query -coverage LC .coverage) && if [ $NUMBER -lt $LINE_COV_GATE ]; then echo "LINE coverage quality gate failed"; echo "Expected result $LINE_COV_GATE%, achieved $NUMBER%"; false; else echo "LINE coverage quality gate passed with $NUMBER% (required $LINE_COV_GATE%)"; true; fi  
+          echo "Check html report https://github.com/andrey-madan/iceoryx1/coverage.html"
         
       - name: MCDC Coverage Quality Gate
         working-directory: ${{github.workspace}}/build
         shell: bash
         # Query for project's coverage and compare with the gate requirements
         run: |
-          NUMBER=$(cpptestcov query -coverage MCDC .coverage) && if [ $NUMBER -lt $MCDC_COV_GATE ]; then echo "MCDC coverage quality gate failed"; echo "Expected result $MCDC_COV_GATE%, echieved $NUMBER%"; false; else echo "MCDC coverage quality gate passed with $NUMBER% (required $MCDC_COV_GATE%)"; true; fi  
-          echo "Check html report https://parasoft-se.github.io/iceoryx/coverage.html"
+          NUMBER=$(cpptestcov query -coverage MCDC .coverage) && if [ $NUMBER -lt $MCDC_COV_GATE ]; then echo "MCDC coverage quality gate failed"; echo "Expected result $MCDC_COV_GATE%, achieved $NUMBER%"; false; else echo "MCDC coverage quality gate passed with $NUMBER% (required $MCDC_COV_GATE%)"; true; fi  
+          echo "Check html report https://github.com/andrey-madan/iceoryx1/coverage.html"
 
       
         
