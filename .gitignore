@@ -4,7 +4,6 @@ build_package/
 install/
 /CMakeLists.txt
 clangd/
-.vscode
 iceoryx_posh/test/input/generated_gateway_config.toml
 /**/*.user
 */doc/html/

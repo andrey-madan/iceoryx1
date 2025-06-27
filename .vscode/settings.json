@@ -1,0 +1,4 @@
+{
+    "cpptest.coverageDataFolder": "${workspaceFolder}/iceoryx_meta/.coverage",
+    "cpptest.compilerIdentifier": "gcc_13-64"
+}
